@@ -8,7 +8,7 @@ class Promotion(Base):
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     code = Column(String(20), nullable=False)
-    discount = Column(DECIMAL, nullable=False)
+    discount = Column(DECIMAL(2,2), nullable=False)
     isActive = Column(Boolean, nullable=False, default=True)
     expirationDate = Column(DATETIME, nullable=False)
 
