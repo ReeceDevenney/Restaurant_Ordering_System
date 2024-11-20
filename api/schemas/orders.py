@@ -8,7 +8,7 @@ from ..schemas.menu_items import MenuItem
 class OrderBase(BaseModel):
     customer_name: str
     description: Optional[str] = None
-    amount: float
+    amount: int
     menu_item_id: int
 
 
@@ -25,7 +25,7 @@ class OrderUpdate(BaseModel):
 class Order(OrderBase):
     id: int
     order_date: Optional[datetime] = None
-    menu_items: list[MenuItem] = None
+    menu_items: MenuItem = None
 
     class Config:
         from_attributes = True

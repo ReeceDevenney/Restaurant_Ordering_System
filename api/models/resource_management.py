@@ -9,4 +9,4 @@ class Resource_management(Base):
     item = Column(String(20), index=True, nullable=False)
     amount = Column(Integer, index=True, nullable=False, server_default='0')
 
-    recipes = relationship('Recipe', backref='resource')
+    #recipes = relationship('Recipe', backref='resource')

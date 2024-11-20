@@ -17,4 +17,4 @@ class User(Base):
     username = Column(String(20), nullable=False, unique = True)
     password = Column(String(128), nullable=False)
 
-    reviews = relationship("RatingReview", back_populates="user", uselist=False)
+    reviews = relationship("Rating_Review", back_populates="user", uselist=False)
