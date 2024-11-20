@@ -5,6 +5,7 @@ from .order_details import OrderDetail
 from ..models.menu_items import MenuItem
 
 
+
 class OrderBase(BaseModel):
     customer_name: str
     description: Optional[str] = None
@@ -19,6 +20,7 @@ class OrderCreate(OrderBase):
 class OrderUpdate(BaseModel):
     customer_name: Optional[str] = None
     description: Optional[str] = None
+    order_status: Optional[int] = None
 
 
 class Order(OrderBase):

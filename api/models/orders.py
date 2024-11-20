@@ -1,7 +1,15 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, DECIMAL, DATETIME
+import enum
+
+from sqlalchemy import Column, ForeignKey, Integer, String, DECIMAL, DATETIME, Enum
 from sqlalchemy.orm import relationship
 from datetime import datetime
 from ..dependencies.database import Base
+
+
+class OrderStatusEnum(enum.Enum):
+    RECEIVED = "Received"
+    IN_PROGRESS = "In Progress"
+    DELIVERED = "Delivered"
 
 
 class Order(Base):
@@ -11,6 +19,7 @@ class Order(Base):
     customer_name = Column(String(100))
     order_date = Column(DATETIME, nullable=False, server_default=str(datetime.now()))
     description = Column(String(300))
+    order_status = Column(Enum(OrderStatusEnum), server_default=OrderStatusEnum.RECEIVED.value)
     menu_item_id = Column(Integer, ForeignKey("menu_items.id"))
     amount = Column(Integer, index=True, nullable=False)
 

@@ -13,4 +13,5 @@ class MenuItem(Base):
     sandwich_id = Column(Integer, ForeignKey("sandwiches.id"), nullable=True)
 
     # Relationships
+
     sandwich = relationship("Sandwich", back_populates="menu_items")
