@@ -5,7 +5,8 @@ from pydantic import BaseModel
 
 
 class PaymentInformationBase(BaseModel):
-    cardInformation: str
+    cardNumber: str
+    cardExpiration: datetime
     paymentType: str
     transactionStatus: str
 
