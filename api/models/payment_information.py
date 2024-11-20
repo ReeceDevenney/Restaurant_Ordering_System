@@ -8,7 +8,7 @@ class Payment_information(Base):
     __tablename__ = "Payment_information"
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    cardInformation = Column(String, nullable=False)
-    transactionStatus = Column(String, nullable=False)
-    paymentType = Column(String, nullable=False)
+    cardInformation = Column(String(20), nullable=False)
+    transactionStatus = Column(String(15), nullable=False)
+    paymentType = Column(String(10), nullable=False)
 

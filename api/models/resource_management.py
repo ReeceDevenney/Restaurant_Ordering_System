@@ -6,7 +6,7 @@ from ..dependencies.database import Base
 class Resource_management(Base):
     __tablename__ = 'resource_management'
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    item = Column(String, index=True, nullable=False)
+    item = Column(String(20), index=True, nullable=False)
     amount = Column(Integer, index=True, nullable=False, server_default='0')
 
     recipes = relationship('Recipe', backref='resource')

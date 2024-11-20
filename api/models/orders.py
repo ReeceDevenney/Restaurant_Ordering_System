@@ -23,4 +23,4 @@ class Order(Base):
     menu_item_id = Column(Integer, ForeignKey("menu_items.id"))
     amount = Column(Integer, index=True, nullable=False)
 
-    sandwich = relationship("Menuitem", back_populates="orders")
+    menu_items = relationship("MenuItem", back_populates="orders")
