@@ -11,5 +11,7 @@ class Order(Base):
     customer_name = Column(String(100))
     order_date = Column(DATETIME, nullable=False, server_default=str(datetime.now()))
     description = Column(String(300))
+    menu_item_id = Column(Integer, ForeignKey("menu_items.id"))
+    amount = Column(Integer, index=True, nullable=False)
 
-    order_details = relationship("OrderDetail", back_populates="order")
+    sandwich = relationship("Menuitem", back_populates="orders")
