@@ -1,7 +1,7 @@
 from datetime import datetime
-from typing import Optional, List
+from typing import Optional
 from pydantic import BaseModel
-from ..models.menu_items import MenuItem
+from ..schemas.menu_items import MenuItem
 
 
 
@@ -25,9 +25,8 @@ class OrderUpdate(BaseModel):
 class Order(OrderBase):
     id: int
     order_date: Optional[datetime] = None
-    menu_items: List[MenuItem] = None
+    menu_items: list[MenuItem] = None
 
     class Config:
         from_attributes = True
-        arbitrary_types_allowed = True
 

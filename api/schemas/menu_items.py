@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 class MenuItemBase(BaseModel):
     name: str
-    price: int
+    price: float
     description: Optional[str] = None
 
 class MenuItemCreate(MenuItemBase):
@@ -19,4 +19,3 @@ class MenuItem(MenuItemBase):
 
     class Config:
         orm_mode = True
-        arbitrary_types_allowed=True
