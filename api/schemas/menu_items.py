@@ -1,16 +1,22 @@
-from sqlalchemy import Column, ForeignKey, Integer, String, DECIMAL
-from sqlalchemy.orm import relationship
-from ..dependencies.database import Base
+from typing import Optional
+from pydantic import BaseModel
 
+class MenuItemBase(BaseModel):
+    name: str
+    price: float
+    description: Optional[str] = None
 
-class MenuItem(Base):
-    __tablename__ = "menu_items"
+class MenuItemCreate(MenuItemBase):
+    pass
 
-    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    name = Column(String, nullable=False, index=True)
-    description = Column(String, nullable=True)
-    price = Column(DECIMAL, nullable=False, server_default='0.00')
-    sandwich_id = Column(Integer, ForeignKey("sandwiches.id"), nullable=True)
+class MenuItemUpdate(BaseModel):
+    name: Optional[str] = None
+    price: Optional[float] = None
+    description: Optional[str] = None
 
-    # Relationships
-    sandwich = relationship("Sandwich", back_populates="menu_items")
+class MenuItem(MenuItemBase):
+    id: int
+    sandwich_id: Optional[int] = None
+
+    class Config:
+        orm_mode = True
