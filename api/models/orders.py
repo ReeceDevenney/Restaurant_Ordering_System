@@ -21,6 +21,5 @@ class Order(Base):
     description = Column(String(300))
     order_status = Column(Enum(OrderStatusEnum), server_default=OrderStatusEnum.RECEIVED.value)
     menu_item_id = Column(Integer, ForeignKey("menu_items.id"))
-    amount = Column(Integer, nullable=True)
 
     menu_items = relationship("MenuItem", back_populates="orders")
