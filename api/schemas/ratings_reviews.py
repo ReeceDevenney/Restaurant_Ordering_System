@@ -1,6 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
-
+from orders import Order
 
 class RatingReviewBase(BaseModel):
     rating: float
@@ -16,6 +16,7 @@ class RatingReviewUpdate(BaseModel):
 class RatingReview(RatingReviewBase):
     review_id: int
     user_id: int
+    order_id: Order = None
 
     class Config:
         orm_mode = True
