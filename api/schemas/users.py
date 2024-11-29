@@ -7,7 +7,6 @@ class UserBase(BaseModel):
     username: str
     role: str
 
-
 class UserCreate(UserBase):
     password: str
 
@@ -18,7 +17,7 @@ class UserUpdate(BaseModel):
 
 class User(UserBase):
     user_id: int
-    reviews: Optional[List["RatingReview"]] = []
+    reviews: Optional[list["RatingReview"]] = []
 
     class Config:
         orm_mode = True
