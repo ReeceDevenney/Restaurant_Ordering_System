@@ -14,4 +14,4 @@ class MenuItem(Base):
     # Relationships
 
     orders = relationship("Order", back_populates="menu_items")
-    recipes = relationship("Recipe", back_populates="menu_items")
+    #recipe = relationship("Recipe", back_populates="menu_items")
