@@ -1,6 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
-from ..schemas.resource_management import ResourceManagementBase
+from ..schemas.resource_management import ResourceManagement
 
 
 class RecipeBase(BaseModel):
@@ -20,7 +20,7 @@ class RecipeUpdate(BaseModel):
 
 class Recipe(RecipeBase):
     id: int
-    resources: Optional[ResourceManagementBase]
+    resource_management: ResourceManagement
 
     class ConfigDict:
         from_attributes = True

@@ -23,3 +23,4 @@ class Order(Base):
     menu_item_id = Column(Integer, ForeignKey("menu_items.id"))
 
     menu_items = relationship("MenuItem", back_populates="orders")
+    reviews = relationship("Rating_Review", back_populates="order")

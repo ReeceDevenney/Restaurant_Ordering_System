@@ -17,7 +17,7 @@ class MenuItemUpdate(BaseModel):
 
 class MenuItem(MenuItemBase):
     id: int
-    recipe: list[Recipe]
+    recipe: list[Recipe] = None
 
     class Config:
         orm_mode = True
