@@ -1,5 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
+from ..schemas.recipes import Recipe
 
 class MenuItemBase(BaseModel):
     name: str
@@ -16,6 +17,7 @@ class MenuItemUpdate(BaseModel):
 
 class MenuItem(MenuItemBase):
     id: int
+    recipe: list[Recipe]
 
     class Config:
         orm_mode = True

@@ -1,6 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
-from orders import Order
+from ..schemas.orders import Order
 
 class RatingReviewBase(BaseModel):
     rating: float

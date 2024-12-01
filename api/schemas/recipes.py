@@ -1,6 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel
-from resource_management import ResourceManagementBase
+from ..schemas.resource_management import ResourceManagementBase
 
 
 class RecipeBase(BaseModel):
