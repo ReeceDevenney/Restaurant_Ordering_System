@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 from ..models.promotions import Promotion
 from ..schemas.promotions import PromotionCrate, PromotionUpdate
 from datetime import datetime
-
+from fastapi import HTTPException
 
 def create_promotion(db: Session, promotion_data: PromotionCrate):
     new_promotion = Promotion(
