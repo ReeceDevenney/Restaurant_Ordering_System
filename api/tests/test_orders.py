@@ -7,7 +7,6 @@ from ..models import orders as model
 # Create a test client for the app
 client = TestClient(app)
 
-
 @pytest.fixture
 def db_session(mocker):
     return mocker.Mock()
