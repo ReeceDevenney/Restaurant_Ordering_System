@@ -8,6 +8,7 @@ class RatingReviewBase(BaseModel):
 
 class RatingReviewCreate(RatingReviewBase):
     user_id: int
+    order_id: int
 
 class RatingReviewUpdate(BaseModel):
     rating: Optional[float] = None
@@ -16,7 +17,7 @@ class RatingReviewUpdate(BaseModel):
 class RatingReview(RatingReviewBase):
     review_id: int
     user_id: int
-    order_id: Order = None
+    order_id: Order
 
     class Config:
         orm_mode = True
