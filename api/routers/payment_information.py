@@ -7,7 +7,11 @@ from ..controllers.payment_information import (
     update_payment_status, apply_promotional_code,
 )
 
-router = APIRouter()
+router = APIRouter(
+    tags=['Payments'],
+    prefix="/payments"
+)
+
 
 @router.post("/pay/")
 def process_payment_route(payment_info: OrderCreate, db: Session = Depends(get_db)):

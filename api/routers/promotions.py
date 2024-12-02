@@ -10,7 +10,10 @@ from ..controllers.promotions import (
     delete_promotion,
 )
 
-router = APIRouter()
+router = APIRouter(
+    tags=["promotions"],
+    prefix="/promotions"
+)
 
 @router.post("/")
 def create_promotion_route(promotion: PromotionCrate, db: Session = Depends(get_db)):
