@@ -1,8 +1,4 @@
 from sqlalchemy.orm import Session
-from ..models.payment_information import Payment_information
-from ..schemas.payment_information import OrderCreate, PaymentInformationUpdate
-from datetime import datetime
-from sqlalchemy.orm import Session
 from fastapi import HTTPException
 from ..models.payment_information import Payment_information
 from ..models.promotions import Promotion
