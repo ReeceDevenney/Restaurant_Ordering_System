@@ -91,7 +91,16 @@ def get_worst_dishes(db: Session, threshold: float = 3.0):
         .filter(dish_stats.c.avg_rating < threshold)
         .all())
 
-    except SQLAlchemyError as e:
-        error = str(e.__dict__['orig'])
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
-    return result
+        # Transform the result into a list of dictionaries
+        result = [
+            { "menu_item_id": row.menu_item_id,
+              "avg_rating": row.avg_rating,
+              "review": row.review,
+              "rating": row.rating
+              }
+            for row in result ]
+        return result
+    except Exception as e:
+        print(f"Error fetching worst dishes: {e}")
+        return []
+
