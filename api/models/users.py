@@ -18,3 +18,4 @@ class User(Base):
     password = Column(String(128), nullable=False)
 
     reviews = relationship("Rating_Review", back_populates="user", uselist=False)
+    orders = relationship("Order", back_populates="users", uselist=False)
