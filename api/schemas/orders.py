@@ -6,9 +6,9 @@ from ..schemas.menu_items import MenuItem
 
 
 class OrderBase(BaseModel):
-    customer_name: str
     description: Optional[str] = None
     menu_item_id: int
+    users_id: int
 
 
 class OrderCreate(OrderBase):
