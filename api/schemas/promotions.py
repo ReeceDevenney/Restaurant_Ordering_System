@@ -9,9 +9,8 @@ class PromotionBase(BaseModel):
     discount: float
 
 
-class PromotionCrate(PromotionBase):
-    pass
-
+class PromotionCreate(PromotionBase):
+    isActive: Optional[bool]
 
 class PromotionUpdate(BaseModel):
     code: Optional[str] = None

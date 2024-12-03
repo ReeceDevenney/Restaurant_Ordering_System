@@ -1,13 +1,14 @@
 from sqlalchemy.orm import Session
 from ..models.promotions import Promotion
-from ..schemas.promotions import PromotionCrate, PromotionUpdate
+from ..schemas.promotions import PromotionCreate, PromotionUpdate
 from datetime import datetime
 from fastapi import HTTPException
 
-def create_promotion(db: Session, promotion_data: PromotionCrate):
+def create_promotion(db: Session, promotion_data: PromotionCreate):
     new_promotion = Promotion(
         code=promotion_data.code,
         discount=promotion_data.discount,
+        isActive=promotion_data.isActive,
         expirationDate=datetime.now(),  # Replace with actual expiration date if needed
     )
     db.add(new_promotion)

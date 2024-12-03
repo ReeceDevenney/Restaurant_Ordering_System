@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
-from ..schemas.promotions import PromotionCrate, PromotionUpdate
+from ..schemas.promotions import PromotionCreate, PromotionUpdate
 from ..dependencies.database import engine, get_db
 from ..controllers.promotions import (
     create_promotion,
@@ -16,7 +16,7 @@ router = APIRouter(
 )
 
 @router.post("/")
-def create_promotion_route(promotion: PromotionCrate, db: Session = Depends(get_db)):
+def create_promotion_route(promotion: PromotionCreate, db: Session = Depends(get_db)):
     return create_promotion(db, promotion)
 
 @router.get("/{code}")

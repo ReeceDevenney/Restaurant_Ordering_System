@@ -17,7 +17,7 @@ class RatingReviewUpdate(BaseModel):
 class RatingReview(RatingReviewBase):
     review_id: int
     user_id: int
-    order_id: Order
+    order_id: int
 
     class Config:
         orm_mode = True
