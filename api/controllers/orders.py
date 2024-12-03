@@ -1,14 +1,34 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException, status, Response, Depends
 from ..models import orders as model
+from ..schemas.resource_management import ResourceAmount
 from sqlalchemy.exc import SQLAlchemyError
+from ..controllers.menu_items import read_one as getMenuItem
+from ..controllers.resource_management import update as updateResource
+
 
 
 def create(db: Session, request):
     new_item = model.Order(
         description=request.description,
-        menu_item_id=request.menu_item_id
+        menu_item_id=request.menu_item_id,
+        users_id=request.users_id
     )
+    menuItems = getMenuItem(db, new_item.menu_item_id)
+    print("Testing")
+    idArr = []
+    ammArr = []
+    for item in menuItems.recipes:
+        if item.amount > item.resource_management.amount:
+            err = "not enough " + item.resource_management.item + " to complete order"
+            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=err)
+        idArr.append(item.resource_management.id)
+        ammArr.append(item.resource_management.amount - item.amount)
+    i = 0
+    for id in idArr:
+        test = ResourceAmount(amount=ammArr[i])
+        updateResource(db, id, test)
+        i = i + 1
 
     try:
         db.add(new_item)
