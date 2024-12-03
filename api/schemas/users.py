@@ -17,7 +17,7 @@ class UserUpdate(BaseModel):
 
 class User(UserBase):
     user_id: int
-    reviews: Optional[list["RatingReview"]] = []
+    reviews: Optional[RatingReview]
 
     class Config:
         orm_mode = True
