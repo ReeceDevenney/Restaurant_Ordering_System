@@ -6,9 +6,6 @@ from ..models.orders import Order
 from ..schemas.payment_information import OrderCreate, PaymentInformationUpdate
 from datetime import datetime
 
-
-
-
 def process_payment(db: Session, payment_info: OrderCreate):
     new_payment = Payment_information(
         cardNumber=payment_info.cardInformation,
@@ -61,3 +58,19 @@ def update_payment_status(db: Session, payment_id: int, payment_update: PaymentI
     db.commit()
     db.refresh(payment)
     return {"detail": "Payment updated successfully", "payment_id": payment.id}
+
+def get_payment(db: Session, payment_id: int):
+    return db.query(Payment_information).filter(Payment_information.id == payment_id).first()
+
+
+def get_all_payments(db: Session):
+    return db.query(Payment_information).all()
+
+
+def delete_payment(db: Session, payment_id: int):
+    payment = db.query(Payment_information).filter(Payment_information.id == payment_id).first()
+    if not payment:
+        raise HTTPException(status_code=404, detail="Payment not found")
+
+    db.delete(payment)
+    db.commit()

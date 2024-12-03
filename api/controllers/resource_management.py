@@ -42,6 +42,8 @@ def read_one(db: Session, item_id):
 
 
 def update(db: Session, item_id, request):
+    print(request)
+    print({"item": "test"})
     try:
         item = db.query(model.Resource_management).filter(model.Resource_management.id == item_id)
         if not item.first():

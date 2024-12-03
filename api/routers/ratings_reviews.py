@@ -35,7 +35,7 @@ def delete(review_id: int, db: Session = Depends(get_db)):
     return controller.delete(db=db, item_id=review_id)
 
 
-@router.get("/worst", response_model=schema.RatingReview)
+@router.get("/bad/{threshold}", response_model=schema.RatingReview)
 def get_worst_dishes(threshold: float = 3.0, db: Session = Depends(get_db)):
-    return get_worst_dishes(db, threshold)
+    return controller.get_worst_dishes(db, threshold)
 

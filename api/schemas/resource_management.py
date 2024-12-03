@@ -3,14 +3,17 @@ from pydantic import BaseModel
 
 class ResourceManagementBase(BaseModel):
     item: str
-    amount: float
+    amount: int
+
+class ResourceAmount(BaseModel):
+    amount: int
 
 class ResourceManagementCreate(ResourceManagementBase):
     pass
 
 class ResourceManagementUpdate(BaseModel):
     item: Optional[str] = None
-    amount: Optional[float] = None
+    amount: Optional[int] = None
 
 class ResourceManagement(ResourceManagementBase):
     id: int
