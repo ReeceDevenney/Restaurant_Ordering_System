@@ -18,11 +18,8 @@ class RatingReviewUpdate(BaseModel):
 class RatingReview(RatingReviewBase):
     review_id: int
     user_id: int
-<<<<<<< HEAD
     order_id: int
-=======
     order: OrderShort
->>>>>>> 004c7b3998ed4d76abedaa45becd7d3144e07bb4
 
     class Config:
         orm_mode = True
