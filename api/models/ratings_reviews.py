@@ -8,7 +8,7 @@ class Rating_Review(Base):
 
     review_id = Column(Integer, primary_key=True, index = True, autoincrement=True, nullable=False)
     user_id = Column(Integer, ForeignKey("users.user_id"), nullable=False, unique=True)
-    order_id = Column(Integer, ForeignKey("orders.id"), nullable=False, unique=True)
+    order_id = Column(Integer, ForeignKey("orders.id"), nullable=False)
     rating = Column(DECIMAL(precision=2, scale=1), nullable=False)
     review = Column(String(300))
 

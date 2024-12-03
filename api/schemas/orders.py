@@ -20,6 +20,9 @@ class OrderUpdate(BaseModel):
     description: Optional[str] = None
     order_status: Optional[int] = None
 
+class OrderShort(OrderBase):
+    id: int
+    order_date: datetime
 
 class Order(OrderBase):
     id: int
