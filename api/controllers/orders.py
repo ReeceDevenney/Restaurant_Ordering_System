@@ -49,6 +49,15 @@ def read_all(db: Session):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
     return result
 
+def read_by_date_range(db: Session, start_date, end_date):
+    try:
+        item = db.query(model.Order).filter(model.Order.order_date >= start_date, model.Order.order_date <= end_date).all()
+        if not item:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Description not found!")
+    except SQLAlchemyError as e:
+        error = str(e.__dict__['orig'])
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)
+    return item
 
 def read_one(db: Session, item_id):
     try:

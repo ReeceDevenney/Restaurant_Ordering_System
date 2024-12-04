@@ -26,7 +26,7 @@ class OrderShort(OrderBase):
 
 class Order(OrderBase):
     id: int
-    order_date: Optional[datetime] = None
+    order_date: datetime
     menu_items: MenuItem = None
 
     class Config:
