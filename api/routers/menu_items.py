@@ -24,6 +24,10 @@ def read_all(db: Session = Depends(get_db)):
 def read_one(item_id: int, db: Session = Depends(get_db)):
     return controller.read_one(db, item_id=item_id)
 
+@router.get("/search/{desc}")
+def read_desc(desc: str, db: Session = Depends(get_db)):
+    return controller.read_by_desc(db, desc)
+
 
 @router.put("/{item_id}", response_model=schema.MenuItem)
 def update(item_id: int, request: schema.MenuItemUpdate, db: Session = Depends(get_db)):
