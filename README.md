@@ -12,6 +12,10 @@
 ### Test API by built-in docs:
 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
-Video Presentation:
-https://github.com/user-attachments/assets/7ef226d3-acd4-439a-b7c8-1215562b2eee
+### Populate table
+at api/mockDataScript.sql there is an sql script to populate your table with mock data.  run it inside of mysql workbench to populate your tables.
 
+Intentionally left out orders and reviews information for you to fill out and test yourself using our CRUD operations.
+
+### Video Presentation:
+https://github.com/user-attachments/assets/7ef226d3-acd4-439a-b7c8-1215562b2eee
